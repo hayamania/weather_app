@@ -38,15 +38,9 @@ hr {
   width: 50px;
 }
 a {
-  color: rgb(240, 248, 255);
   text-decoration: none;
-  transition: all 150ms ease-in-out;
+  color: black;
 }
-
-a:hover {
-  color: #f8a501;
-}
-
 .form-city {
   width: 100%;
 }
@@ -133,4 +127,22 @@ a:hover {
 }
 .input-group {
   width: 90%;
+}
+#temp-celsius,
+#temp-fahrenheit {
+  color: rgb(240, 248, 255);
+  text-decoration: none;
+  transition: all 150ms ease-in-out;
+}
+
+#temp-celsius:hover,
+#temp-fahrenheit:hover {
+  color: #f8a501;
+}
+
+#footerComment {
+  text-align: right;
+  text-shadow: none;
+  color: rgba(0, 0, 0, 0.8);
+  width: 85%;
 }
