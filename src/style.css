@@ -1,0 +1,136 @@
+body {
+  font-family: "Raleway", sans-serif;
+}
+h1,
+h2,
+h3,
+p {
+  color: rgb(240, 248, 255);
+  text-shadow: rgba(0, 0, 0, 0.9) 4px 0 15px;
+}
+
+h1 {
+  font-family: "Pacifico", cursive;
+  font-weight: 700;
+  font-size: 40px;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+h2 {
+  font-weight: 600;
+  font-size: 30px;
+  margin-bottom: 0;
+}
+h3 {
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 0;
+}
+p {
+  text-align: right;
+  font-weight: 200;
+  font-size: 12px;
+  margin: 30px 0 0;
+}
+hr {
+  display: block;
+  margin: 5px auto;
+  width: 50px;
+}
+a {
+  color: rgb(240, 248, 255);
+  text-decoration: none;
+  transition: all 150ms ease-in-out;
+}
+
+a:hover {
+  color: #f8a501;
+}
+
+.form-city {
+  width: 100%;
+}
+.card {
+  text-align: center;
+  display: block;
+  margin: 0 auto;
+  padding: 30px;
+  border-radius: 10px;
+  background-image: url(../images/08sunny.jpg);
+  background-size: cover;
+  background-blend-mode: darken;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.card-title {
+  margin-bottom: 0;
+}
+.container {
+  margin: 30px;
+}
+.top-left {
+  padding: 20px;
+}
+.top-middle {
+  color: rgb(240, 248, 255);
+  text-shadow: rgba(0, 0, 0, 0.8) 3px 0 15px;
+  padding: 20px;
+}
+.top-right {
+  color: rgb(240, 248, 255);
+  text-shadow: rgba(0, 0, 0, 0.8) 3px 0 15px;
+  font-size: larger;
+  padding: 80px 50px 80px 0;
+}
+.btn-outline-secondary {
+  color: rgb(240, 248, 255);
+  background-color: #156efd;
+  border: 1px solid #156efd;
+  transition: all 200ms ease-in-out;
+}
+.btn-outline-secondary:hover {
+  color: #156efd;
+  background-color: rgb(240, 248, 255);
+  border: 1px solid #156efd;
+}
+
+.tempreture {
+  font-size: 100px;
+}
+.tempreture-change {
+  position: relative;
+  bottom: 50px;
+}
+.maxmintemp {
+  line-height: 1;
+  text-align: center;
+}
+.current-icon {
+  display: block;
+  margin: 0% auto;
+  width: 100px;
+}
+.icon {
+  display: block;
+  margin: 0% auto;
+  width: 80px;
+}
+.day {
+  font-weight: 800;
+}
+.max {
+  font-weight: 600;
+  font-size: larger;
+}
+.forcast {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  padding: 20px;
+}
+.search {
+  text-align: center;
+  background-color: rgba(240, 248, 255, 0.8);
+  border-radius: 40px;
+}
+.input-group {
+  width: 90%;
+}
