@@ -53,10 +53,9 @@
           </form>
 
           <div class="row">
-            <div class="col-4 top-left">
+            <div class="col-sm-4 top-left">
               <h3 id="currentDate"></h3>
               <h2 class="card-title location-sph2" id="searchLocation"></h2>
-              <h3 class="location-wide" id="locationWide"></h3>
               <h1 class="current-condi" id="currenCondi"></h1>
               <img
                 src="images/day.svg"
@@ -65,7 +64,7 @@
                 id="currentIcon"
               />
             </div>
-            <div class="col-5 top-middle">
+            <div class="col-sm-5 top-middle">
               <span class="tempreture" id="temp-now">21</span>
               <span class="tempreture-change">
                 <a href="#" id="temp-celsius">℃ </a>
@@ -73,10 +72,17 @@
                 <a href="#" id="temp-fahrenheit">℉ </a>
               </span>
             </div>
-            <div class="col-3 top-right maxmintemp">
-              <div class="max" id="tempMax">27º</div>
-              <hr />
-              <div id="tempMin">18º</div>
+            <div class="col-sm-3 top-right">
+              <div class="maxmintemp">
+                <div class="max" id="tempMax"></div>
+                <hr />
+                <div id="tempMin"></div>
+              </div>
+              <ul class="otherDetails">
+                <li id="feels-like"></li>
+                <li id="detailHumidity"></li>
+                <li id="windSpeed"></li>
+              </ul>
             </div>
           </div>
           <div class="row forcast">

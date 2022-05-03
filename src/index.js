@@ -74,19 +74,28 @@ function showWeatherOfCity(response) {
   let temp = Math.round(response.data.main.temp);
   let temp_max = `${Math.round(response.data.main.temp_max)}º`;
   let temp_min = `${Math.round(response.data.main.temp_min)}º`;
+  let feelsLike = `Feels like ${Math.round(response.data.main.feels_like)}º`;
   let condition = response.data.weather[0].main;
   let conditionID = response.data.weather[0].id;
+  let humidity = `Humidity: ${response.data.main.humidity}%`;
+  let wind = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
   let currentTemp = document.querySelector("#temp-now");
   let tempMax = document.querySelector("#tempMax");
   let tempMin = document.querySelector("#tempMin");
   let currentCondi = document.querySelector("#currenCondi");
   let showCity = document.querySelector("#searchLocation");
+  let feels = document.querySelector("#feels-like");
+  let detailHumidity = document.querySelector("#detailHumidity");
+  let windSpeed = document.querySelector("#windSpeed");
 
   currentTemp.innerHTML = temp;
   tempMax.innerHTML = temp_max;
   tempMin.innerHTML = temp_min;
   currentCondi.innerHTML = condition;
   showCity.innerHTML = response.data.name;
+  feels.innerHTML = feelsLike;
+  detailHumidity.innerHTML = humidity;
+  windSpeed.innerHTML = wind;
 
   // Change background image and icon
   changeBackimageIcon(conditionID);
