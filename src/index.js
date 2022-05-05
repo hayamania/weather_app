@@ -1,31 +1,32 @@
 // Get current date and time
-let now = new Date();
-let currentDate = now.getDate();
-let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-let currentDay = days[now.getDay()];
-let months = [
-  "Jan",
-  "Feb",
-  "Mar",
-  "Apr",
-  "May",
-  "Jun",
-  "Jul",
-  "Aug",
-  "Sep",
-  "Oct",
-  "Nov",
-  "Dec",
-];
-let currentMonth = months[now.getMonth()];
-let currentHour = String(now.getHours()).padStart(2, "0");
-let currentTime = String(now.getMinutes()).padStart(2, "0");
-let nowDateSentene = `${currentDay} ${currentDate} ${currentMonth}   ${currentHour}:${currentTime}`;
-let nowDate = document.querySelector("#currentDate");
-let lastUpdate = document.querySelector("#lastUpdate");
-nowDate.innerHTML = nowDateSentene;
-lastUpdate.innerHTML = `Last update: ${nowDateSentene}`;
-
+function getDateAndTime(dateandtime) {
+  let now = new Date(dateandtime * 1000);
+  let currentDate = now.getDate();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let currentDay = days[now.getDay()];
+  let months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+  let currentMonth = months[now.getMonth()];
+  let currentHour = String(now.getHours()).padStart(2, "0");
+  let currentTime = String(now.getMinutes()).padStart(2, "0");
+  let nowDateSentene = `${currentDay} ${currentDate} ${currentMonth}   ${currentHour}:${currentTime}`;
+  let nowDate = document.querySelector("#currentDate");
+  let lastUpdate = document.querySelector("#lastUpdate");
+  nowDate.innerHTML = nowDateSentene;
+  lastUpdate.innerHTML = `Last update: ${nowDateSentene}`;
+}
 // Converting Celsius to Fahrenheit
 function cToF(celsius) {
   return Math.round((celsius * 9) / 5 + 32);
@@ -75,6 +76,7 @@ function showWeatherOfCity(response) {
   let temp_max = `${Math.round(response.data.main.temp_max)}º`;
   let temp_min = `${Math.round(response.data.main.temp_min)}º`;
   let feelsLike = `Feels like ${Math.round(response.data.main.feels_like)}º`;
+  let datenTime = response.data.dt;
   let condition = response.data.weather[0].main;
   let conditionID = response.data.weather[0].id;
   let humidity = `Humidity: ${response.data.main.humidity}%`;
@@ -96,6 +98,9 @@ function showWeatherOfCity(response) {
   feels.innerHTML = feelsLike;
   detailHumidity.innerHTML = humidity;
   windSpeed.innerHTML = wind;
+
+  // Show date ant time
+  getDateAndTime(datenTime);
 
   // Change background image and icon
   changeBackimageIcon(conditionID);
@@ -206,4 +211,4 @@ let getCurrentLocation = document.querySelector("#searchCurrentLocation");
 getCurrentLocation.addEventListener("click", clickLocation);
 
 // Show weather info at default city
-getWeather("Perth");
+getWeather("London");
