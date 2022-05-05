@@ -199,7 +199,7 @@ function showLocation(response) {
 }
 
 let searchCityButton = document.querySelector("#searchForm");
-searchCityButton.addEventListener("click", switchCity);
+searchCityButton.addEventListener("submit", switchCity);
 
 let switchFahrenheit = document.querySelector("#temp-fahrenheit");
 switchFahrenheit.addEventListener("click", showFTemp);
