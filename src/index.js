@@ -90,6 +90,7 @@ function showWeatherOfCity(response) {
   let detailHumidity = document.querySelector("#detailHumidity");
   let windSpeed = document.querySelector("#windSpeed");
 
+  celsiusTemp = temp;
   currentTemp.innerHTML = temp;
   tempMax.innerHTML = temp_max;
   tempMin.innerHTML = temp_min;
@@ -132,8 +133,9 @@ function switchCity(event) {
     }
     searchCity = resultCity.join(" ");
 
-    //Chenge the city from defalt
-    // showCity.innerHTML = searchCity;
+    //Set .change-unit default id
+    switchFahrenheit.setAttribute("id", "temp-fahrenheit");
+    switchCelsius.setAttribute("id", "temp-celsius");
 
     //Get weather info from API
     getWeather(searchCity);
@@ -146,14 +148,19 @@ function switchCity(event) {
 function showFTemp(event) {
   event.preventDefault();
   let TempNow = document.querySelector("#temp-now");
-  TempNow.innerHTML = cToF(21);
+  TempNow.innerHTML = cToF(celsiusTemp);
+  switchFahrenheit.removeAttribute("id");
+  switchCelsius.setAttribute("id", "temp-celsius");
 }
 
 // Show Celsius tempreture
 function showCTemp(event) {
   event.preventDefault();
   let TempNow = document.querySelector("#temp-now");
-  TempNow.innerHTML = FtoC(70);
+  TempNow.innerHTML = celsiusTemp;
+  switchCelsius.removeAttribute("id");
+  switchFahrenheit.setAttribute("id", "temp-fahrenheit");
+  console.log(switchCelsius);
 }
 
 // Seach current location
@@ -198,6 +205,8 @@ function showLocation(response) {
   axios.get(apiUrl + apiKey).then(showTemperature);
 }
 
+let celsiusTemp = null;
+
 let searchCityButton = document.querySelector("#searchForm");
 searchCityButton.addEventListener("submit", switchCity);
 
@@ -210,5 +219,6 @@ switchCelsius.addEventListener("click", showCTemp);
 let getCurrentLocation = document.querySelector("#searchCurrentLocation");
 getCurrentLocation.addEventListener("click", clickLocation);
 
-// Show weather info at default city
+// Show weather info at default city and take off #temp-celsius
 getWeather("London");
+switchCelsius.removeAttribute("id");

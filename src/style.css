@@ -35,10 +35,6 @@ hr {
   margin: 5px auto;
   width: 50px;
 }
-a {
-  text-decoration: none;
-  color: black;
-}
 ul {
   padding: 0;
   margin-top: 20px;
@@ -50,6 +46,16 @@ li {
   font-style: italic;
   line-height: 18px;
 }
+a.footer {
+  text-decoration: none;
+  color: black;
+}
+
+a.temp-unit {
+  text-decoration: none;
+  color: rgb(240, 248, 255);
+}
+
 .form-city {
   width: 100%;
 }
@@ -137,16 +143,16 @@ li {
 .input-group {
   width: 90%;
 }
-#temp-celsius,
-#temp-fahrenheit {
+.temp-unit {
   color: rgb(240, 248, 255);
   text-decoration: none;
   transition: all 150ms ease-in-out;
+  cursor: default;
 }
-
 #temp-celsius:hover,
 #temp-fahrenheit:hover {
   color: #f8a501;
+  cursor: pointer;
 }
 
 #footerComment {
