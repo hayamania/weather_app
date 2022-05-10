@@ -51,7 +51,6 @@ function changeBackimageIcon(condi) {
     // drizzle or rain
     changeBackgound.style.backgroundImage = "url(./images/03rain.jpg)";
     changeIcon.src = "./images/rainy-7.svg";
-    console.log("rain" + changeBackgound);
   } else if (condi < 700) {
     // snow
     changeBackgound.style.backgroundImage = "url(./images/06snow.jpg)";
@@ -160,7 +159,6 @@ function showCTemp(event) {
   TempNow.innerHTML = celsiusTemp;
   switchCelsius.removeAttribute("id");
   switchFahrenheit.setAttribute("id", "temp-fahrenheit");
-  console.log(switchCelsius);
 }
 
 // Seach current location
@@ -170,8 +168,6 @@ function clickLocation(event) {
 }
 // Show weather info in current location
 function showTemperature(weather) {
-  console.log(weather);
-
   let temp = Math.round(weather.data.main.temp);
   let temp_max = `${Math.round(weather.data.main.temp_max)}º`;
   let temp_min = `${Math.round(weather.data.main.temp_min)}º`;
