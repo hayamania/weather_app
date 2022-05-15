@@ -201,6 +201,31 @@ function showLocation(response) {
   axios.get(apiUrl + apiKey).then(showTemperature);
 }
 
+// Show forecast
+function showForecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHtml = `<div class="row">`;
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+    <div class="col">
+      <div class="day">${day}</div>
+      <img src="images/cloudy.svg" alt="cloudy" class="icon" />
+      <div class="maxmintemp">
+        <div class="max">25º</div>
+        <hr />
+        <div>15º</div>
+      </div>
+    </div>
+  `;
+  });
+
+  forecastHtml = forecastHtml + `</div>`;
+  forecastElement.innerHTML = forecastHtml;
+}
+
 let celsiusTemp = null;
 
 let searchCityButton = document.querySelector("#searchForm");
@@ -218,3 +243,6 @@ getCurrentLocation.addEventListener("click", clickLocation);
 // Show weather info at default city and take off #temp-celsius
 getWeather("London");
 switchCelsius.removeAttribute("id");
+
+// Show weather forecast next 5 days
+showForecast();
