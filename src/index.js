@@ -58,6 +58,7 @@ function changeBackimageIcon(condi) {
   } else if (condi < 800) {
     // mist/fog/dust...etc
     changeBackgound.style.backgroundImage = "url(./images/07mist.jpg)";
+    changeIcon.src = "./images/weather.svg";
   } else if (condi === 800) {
     // clear
     changeBackgound.style.backgroundImage = "url(./images/08sunny.jpg)";
@@ -213,26 +214,60 @@ function showLocation(response) {
   axios.get(apiUrl + apiKey).then(showTemperature);
 }
 
+// Changing forecast wheather icon
+function changeForecastIcon(condi) {
+  // Changing background image
+  if (condi < 300) {
+    //thunderstorm
+    return "images/thunder.svg";
+  } else if (condi < 600) {
+    // drizzle or rain
+    return "images/rainy-7.svg";
+  } else if (condi < 700) {
+    // snow
+    return "images/snowy-6.svg";
+  } else if (condi < 800) {
+    // mist/fog/dust...etc
+    return "images/weather.svg";
+  } else if (condi === 800) {
+    // clear
+    return "images/day.svg";
+  } else {
+    // clouds
+    return "images/cloudy.svg";
+  }
+}
+// Format day from timestamp
+function formatTimestamp(stamp) {
+  let forecastDayStamp = new Date(stamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let futureDay = days[forecastDayStamp.getDay()];
+  return futureDay;
+}
+
 // Show forecast
 function showForecast(response) {
-  console.log(response.data.daily);
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#forecast");
   let forecastHtml = `<div class="row">`;
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  forecast.forEach(function (forecast, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
     <div class="col">
-      <div class="day">${day}</div>
-      <img src="images/cloudy.svg" alt="cloudy" class="icon" />
+      <div class="day">${formatTimestamp(forecast.dt)}</div>
+      <img src="${changeForecastIcon(
+        forecast.weather[0].id
+      )}" alt="cloudy" class="icon" id="forecastIcon"/>
       <div class="maxmintemp">
-        <div class="max">25º</div>
+        <div class="max">${Math.round(forecast.temp.max)}º</div>
         <hr />
-        <div>15º</div>
+        <div>${Math.round(forecast.temp.min)}º</div>
       </div>
     </div>
   `;
+    }
   });
 
   forecastHtml = forecastHtml + `</div>`;
