@@ -51,11 +51,6 @@ a.footer {
   color: black;
 }
 
-a.temp-unit {
-  text-decoration: none;
-  color: rgb(240, 248, 255);
-}
-
 .form-city {
   width: 100%;
 }
@@ -148,11 +143,6 @@ a.temp-unit {
   text-decoration: none;
   transition: all 150ms ease-in-out;
   cursor: default;
-}
-#temp-celsius:hover,
-#temp-fahrenheit:hover {
-  color: #f8a501;
-  cursor: pointer;
 }
 
 #footerComment {

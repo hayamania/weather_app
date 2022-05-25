@@ -99,7 +99,6 @@ function showWeatherOfCity(response) {
   let detailHumidity = document.querySelector("#detailHumidity");
   let windSpeed = document.querySelector("#windSpeed");
 
-  celsiusTemp = temp;
   currentTemp.innerHTML = temp;
   tempMax.innerHTML = temp_max;
   tempMin.innerHTML = temp_min;
@@ -145,33 +144,11 @@ function switchCity(event) {
     }
     searchCity = resultCity.join(" ");
 
-    //Set .change-unit default id
-    switchFahrenheit.setAttribute("id", "temp-fahrenheit");
-    switchCelsius.setAttribute("id", "temp-celsius");
-
     //Get weather info from API
     getWeather(searchCity);
   } else {
     // alert("Please input a city");
   }
-}
-
-// Show fahrenheit tempreture
-function showFTemp(event) {
-  event.preventDefault();
-  let TempNow = document.querySelector("#temp-now");
-  TempNow.innerHTML = cToF(celsiusTemp);
-  switchFahrenheit.removeAttribute("id");
-  switchCelsius.setAttribute("id", "temp-celsius");
-}
-
-// Show Celsius tempreture
-function showCTemp(event) {
-  event.preventDefault();
-  let TempNow = document.querySelector("#temp-now");
-  TempNow.innerHTML = celsiusTemp;
-  switchCelsius.removeAttribute("id");
-  switchFahrenheit.setAttribute("id", "temp-fahrenheit");
 }
 
 // Seach current location
@@ -274,20 +251,11 @@ function showForecast(response) {
   forecastElement.innerHTML = forecastHtml;
 }
 
-let celsiusTemp = null;
-
 let searchCityButton = document.querySelector("#searchForm");
 searchCityButton.addEventListener("submit", switchCity);
-
-let switchFahrenheit = document.querySelector("#temp-fahrenheit");
-switchFahrenheit.addEventListener("click", showFTemp);
-
-let switchCelsius = document.querySelector("#temp-celsius");
-switchCelsius.addEventListener("click", showCTemp);
 
 let getCurrentLocation = document.querySelector("#searchCurrentLocation");
 getCurrentLocation.addEventListener("click", clickLocation);
 
-// Show weather info at default city and take off #temp-celsius
+// Show weather info at default city
 getWeather("Perth");
-switchCelsius.removeAttribute("id");
