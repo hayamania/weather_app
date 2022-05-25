@@ -69,6 +69,15 @@ function changeBackimageIcon(condi) {
   }
 }
 
+// Get future forecast data from API
+function getForecast(coordinate) {
+  let apiKey = "a5819625e2717720981216aa54bee886";
+  let units = "metric";
+  let lat = coordinate.lat;
+  let lon = coordinate.lon;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&exclude=current,minutely,hourly&appid=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showForecast);
+}
 // Show weather info in searched city
 function showWeatherOfCity(response) {
   let temp = Math.round(response.data.main.temp);
@@ -104,6 +113,9 @@ function showWeatherOfCity(response) {
 
   // Change background image and icon
   changeBackimageIcon(conditionID);
+
+  // Get future forecast data from API
+  getForecast(response.data.coord);
 }
 // Get weather at searched city from API
 function getWeather(city) {
@@ -202,7 +214,8 @@ function showLocation(response) {
 }
 
 // Show forecast
-function showForecast() {
+function showForecast(response) {
+  console.log(response.data.daily);
   let forecastElement = document.querySelector("#forecast");
   let forecastHtml = `<div class="row">`;
   let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
@@ -241,8 +254,5 @@ let getCurrentLocation = document.querySelector("#searchCurrentLocation");
 getCurrentLocation.addEventListener("click", clickLocation);
 
 // Show weather info at default city and take off #temp-celsius
-getWeather("London");
+getWeather("Perth");
 switchCelsius.removeAttribute("id");
-
-// Show weather forecast next 5 days
-showForecast();
