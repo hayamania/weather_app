@@ -125,11 +125,6 @@ a.footer {
   font-weight: 600;
   font-size: larger;
 }
-.forcast {
-  background-color: rgba(255, 255, 255, 0.4);
-  border-radius: 10px;
-  padding: 20px;
-}
 .search {
   text-align: center;
   background-color: rgba(240, 248, 255, 0.8);
@@ -144,7 +139,11 @@ a.footer {
   transition: all 150ms ease-in-out;
   cursor: default;
 }
-
+#forecast {
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 10px;
+  padding: 20px;
+}
 #footerComment {
   text-align: right;
   text-shadow: none;
